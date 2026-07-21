@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>김아장배 미즈존예 선발대회</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+   <!-- 파비콘 -->
+<link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>"
+>
+
+<!-- 카카오톡·SNS 공유 미리보기 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="김아장배 미즈존예 선발대회">
+<meta property="og:description" content="당신이 뽑은 영예의 존예는 누구? 지금 바로 심사위원이 되어보세요!">
+<meta property="og:url" content="https://kimazang.github.io/msjonye/">
+<meta property="og:site_name" content="미즈존예 선발대회">
+
+<meta property="og:image" content="https://kimazang.github.io/msjonye/og_msjonye.png">
+<meta property="og:image:secure_url" content="https://kimazang.github.io/msjonye/og_msjonye.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="김아장배 미즈존예 선발대회">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="김아장배 미즈존예 선발대회">
+<meta name="twitter:description" content="당신이 뽑은 영예의 존예는 누구? 지금 바로 심사위원이 되어보세요!">
+<meta name="twitter:image" content="https://kimazang.github.io/msjonye/og_msjonye.png">
+
+    <style>
+        :root {
+            /* 홀로그램 하이틴 팔레트 - 핑크x라벤더x사이버블루 */
+            --primary: #ff4fa3;
+            --primary-dark: #ff2b8f;
+            --primary-light: #ffb6dd;
+            --secondary: #a78bfa;
+            --accent-blue: #7dd3fc;
+            --accent-yellow: #fde68a;
+            --bg-base: #fdf2f9;
+            --text-main: #4a2f45;
+            --text-light: #b092ab;
+            --white-card: rgba(255, 255, 255, 0.95);
+            --shadow-pink: rgba(255, 79, 163, 0.28);
+            --shadow-purple: rgba(167, 139, 250, 0.2);
+            /* 시그니처: 홀로그램 스티커 그라데이션 */
+            --holo: linear-gradient(115deg, #ffb6dd 0%, #d8b4fe 30%, #7dd3fc 60%, #ffb6dd 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body,
+button {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><path d="M4 4 L4 22 L9 17 L14 26 L18 24 L13 15 L22 15 Z" fill="%23ff4fa3" stroke="%23ffffff" stroke-width="2.5" stroke-linejoin="round"/></svg>') 4 4, auto;
+}
+
+input[type="text"] {
+    cursor: text;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+        body {
+            background-color: var(--bg-base);
+            background-image:
+                radial-gradient(circle at 12% 18%, rgba(255, 182, 221, 0.45) 0%, transparent 38%),
+                radial-gradient(circle at 88% 12%, rgba(216, 180, 254, 0.4) 0%, transparent 38%),
+                radial-gradient(circle at 50% 95%, rgba(125, 211, 252, 0.35) 0%, transparent 42%),
+                linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 20px 20px, 20px 20px;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            min-height: 100dvh;
+            overflow-x: hidden;
+            overscroll-behavior-y: contain;
+            font-weight: 500;
+        }
+
+        #app {
+            width: 100%;
+            max-width: 450px;
+            min-height: 100vh;
+            min-height: 100dvh;
+            background: var(--white-card);
+            box-shadow: 0 20px 50px var(--shadow-pink);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        #app::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 6px;
+            background: var(--holo);
+            background-size: 300% 100%;
+            animation: holoSlide 6s linear infinite;
+            z-index: 20;
+        }
+
+        @keyframes holoSlide {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 300% 0%; }
+        }
+
+        .screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 24px;
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            overflow-y: auto;
+            opacity: 0;
+            position: relative;
+        }
+
+        .screen::-webkit-scrollbar {
+            display: none;
+        }
+
+        .screen.active {
+            display: flex;
+            opacity: 1;
+            animation: bounceFadeIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes bounceFadeIn {
+            0% { transform: scale(0.95) translateY(20px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        .deco-sparkle {
+            position: absolute;
+            pointer-events: none;
+            color: var(--accent-yellow);
+            text-shadow: 0 0 8px rgba(253, 230, 138, 0.9);
+            animation: twinkle 2.4s ease-in-out infinite;
+            z-index: 5;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.25; transform: scale(0.8) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.2) rotate(20deg); }
+        }
+
+        .title-group {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .sponsor-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            box-shadow: 0 4px 12px var(--shadow-pink);
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 1.85rem;
+            color: var(--text-main);
+            line-height: 1.35;
+            letter-spacing: -0.5px;
+            text-shadow: 2px 2px 0px rgba(255, 182, 221, 0.6);
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--primary);
+            font-weight: 800;
+            margin-top: 6px;
+        }
+
+        .date-text {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: 15px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 4px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 182, 221, 0.5);
+            display: inline-block;
+        }
+
+        .pink-box {
+            background: #fff;
+            border: 2px solid #ffe0f0;
+            border-radius: 22px;
+            padding: 20px;
+            width: 100%;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 20px rgba(255, 182, 221, 0.2);
+            position: relative;
+        }
+
+        .pink-box::after {
+            content: '✦';
+            position: absolute;
+            top: -12px;
+            right: 16px;
+            font-size: 1.3rem;
+            color: var(--accent-yellow);
+            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.12));
+        }
+
+        .pink-box-title {
+            text-align: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            letter-spacing: 1.5px;
+        }
+
+        .candidate-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .candidate-name {
+            background: linear-gradient(135deg, #fff5fa, #ffe9f4);
+            padding: 12px;
+            text-align: center;
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            border-radius: 14px;
+            border: 2px dashed var(--primary-light);
+        }
+
+        .candidate-name:nth-child(odd) { transform: rotate(-1.2deg); }
+        .candidate-name:nth-child(even) { transform: rotate(1.2deg); }
+
+        .guide-text {
+            font-size: 1rem;
+            line-height: 1.75;
+            text-align: center;
+            word-break: keep-all;
+            font-weight: 650;
+        }
+
+        .guide-text strong {
+            color: var(--primary-dark);
+            background: linear-gradient(180deg, transparent 60%, #ffd6ec 40%);
+            font-weight: 800;
+        }
+
+        .guide-point {
+            display: block;
+            margin: 14px 0 4px;
+            font-size: 1.08rem;
+            line-height: 1.55;
+            color: var(--text-main);
+            font-weight: 800;
+        }
+
+        .prize-box {
+            width: 100%;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #f2cfe1;
+        }
+
+        .prize-title {
+            margin-bottom: 9px;
+            color: var(--primary-dark);
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .prize-item {
+            font-size: 0.88rem;
+            line-height: 1.65;
+            color: var(--text-main);
+            font-weight: 650;
+            word-break: keep-all;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark) 60%, var(--secondary));
+            color: white;
+            border: none;
+            padding: 18px 0;
+            width: 100%;
+            border-radius: 18px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            box-shadow: 0 10px 24px var(--shadow-pink);
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            margin-top: auto;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 60%; height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.55), transparent);
+            transform: skewX(-20deg);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            50%, 100% { left: 150%; }
+        }
+
+        .btn-primary:hover:not(:disabled), .btn-primary:active:not(:disabled) {
+            transform: scale(0.97);
+            box-shadow: 0 4px 12px var(--shadow-pink);
+        }
+
+        .btn-primary:disabled {
+            cursor: not-allowed;
+            opacity: 0.58;
+            animation: none;
+            box-shadow: none;
+        }
+
+        .btn-primary.urgent {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 79, 163, 0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(255, 79, 163, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 79, 163, 0); }
+        }
+
+        /* 공유하기 버튼 */
+        .btn-share {
+            background: #fff;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 16px 0;
+            width: 100%;
+            border-radius: 18px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            box-shadow: 0 4px 12px var(--shadow-pink);
+            transition: all 0.2s;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn-share:hover, .btn-share:active {
+            background: #fff0f5;
+            transform: translateY(-2px);
+        }
+
+        .progress-wrapper {
+            width: 100%;
+            height: 10px;
+            background: #ffe3ed;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--holo);
+            background-size: 300% 100%;
+            animation: holoSlide 4s linear infinite;
+            width: 0%;
+            border-radius: 10px;
+            transition: width 0.4s ease-out;
+        }
+
+        .q-hint {
+            font-size: 0.8rem;
+            color: var(--primary-dark);
+            font-weight: 800;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ffe0f0, #f0e5ff);
+            padding: 4px 12px;
+            border-radius: 12px;
+        }
+
+        .question-text {
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--text-main);
+            margin-bottom: 24px;
+            text-align: center;
+            word-break: keep-all;
+            line-height: 1.45;
+            letter-spacing: -0.3px;
+        }
+
+        .answers-container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            padding-bottom: 20px;
+        }
+
+        .answers-container.grid-layout {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .answer-btn {
+            appearance: none;
+            position: relative;
+            width: 100%;
+            background: #fff;
+            border: 2px solid #ffe0f0;
+            padding: 16px;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+            text-align: center;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            word-break: keep-all;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .answer-btn:hover:not(:disabled), .answer-btn:active:not(:disabled) {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, #fff5fa, #f7f2ff);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px var(--shadow-pink);
+        }
+
+        .answer-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.72;
+        }
+
+        .answer-btn:focus-visible,
+        .btn-primary:focus-visible,
+        .btn-share:focus-visible,
+        .styled-input:focus-visible {
+            outline: 3px solid rgba(125, 211, 252, 0.9);
+            outline-offset: 3px;
+        }
+
+        .answer-img {
+            width: 100%;
+            background-color: #f8f0f5;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 8px;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .answer-img.semi {
+            aspect-ratio: 4/5;
+            max-height: 25vh;
+            margin-bottom: 0;
+        }
+
+        .answer-img.portrait {
+            aspect-ratio: 3/4;
+            max-height: 30vh;
+        }
+
+        .answer-img.square {
+            aspect-ratio: 1/1;
+            max-height: 20vh;
+        }
+
+        .answer-img.landscape {
+            aspect-ratio: 16/9;
+            max-height: 18vh;
+        }
+
+        .answer-img.vertical-600-750 {
+            aspect-ratio: 4/5;
+            max-height: 30vh;
+        }
+
+        .answer-badge {
+            position: absolute;
+            top: 13px;
+            left: 13px;
+            z-index: 2;
+            padding: 4px 8px;
+            border: 1px solid rgba(255, 79, 163, 0.28);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.94);
+            color: var(--primary-dark);
+            font-size: 0.68rem;
+            font-weight: 800;
+            line-height: 1;
+            box-shadow: 0 2px 8px rgba(74, 47, 69, 0.12);
+        }
+
+        .answer-btn.img-only {
+            padding: 8px;
+        }
+
+        .answer-text {
+            font-size: 0.9rem;
+            margin-top: 4px;
+            line-height: 1.3;
+            white-space: pre-line;
+        }
+
+        .result-heading {
+            width: 100%;
+            margin-bottom: 4px;
+            text-align: center;
+        }
+
+        .result-heading .result-main-title {
+            font-size: 1.72rem;
+            line-height: 1.35;
+            color: var(--text-main);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-shadow: 2px 2px 0 rgba(255, 182, 221, 0.55);
+        }
+
+        .result-heading .result-subtitle {
+            margin-top: 10px;
+            color: var(--primary-dark);
+            font-size: 1.02rem;
+            font-weight: 800;
+        }
+
+        .styled-input {
+            width: 100%;
+            padding: 16px;
+            border-radius: 14px;
+            border: 2px solid #ffe0f0;
+            font-size: 1rem;
+            background: #fff;
+            outline: none;
+            transition: all 0.2s;
+            text-align: center;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .styled-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 5px rgba(255, 79, 163, 0.12);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 20px 0 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+
+        .warning-text {
+            font-size: 0.8rem;
+            color: #ff4d6a;
+            font-weight: 700;
+            margin-top: 12px;
+            display: block;
+        }
+
+        .result-img-box {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            margin: 20px 0;
+            padding: 6px;
+            background: var(--holo);
+            background-size: 300% 300%;
+            animation: holoSlide2 5s ease infinite;
+            box-shadow: 0 14px 30px var(--shadow-pink);
+        }
+
+        @keyframes holoSlide2 {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .result-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #fff;
+            border: 4px solid #fff;
+        }
+
+        .pick-name {
+            font-weight: 800;
+            font-size: 2.1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 10px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .overall-box {
+            width: 100%;
+            background: linear-gradient(180deg, #ffffff, #fff8fc);
+            border: 2.5px dashed var(--primary);
+            border-radius: 22px;
+            padding: 24px;
+            margin-top: 20px;
+            text-align: center;
+            box-shadow: 0 10px 24px rgba(255, 182, 221, 0.18);
+        }
+
+        .overall-title {
+            font-size: 0.9rem;
+            color: var(--text-main);
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .score-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .score-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #fff5fa, #fdf0ff);
+            padding: 12px 16px;
+            border-radius: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+            border: 2px solid #ffe0f0;
+            box-shadow: 0 4px 10px rgba(255, 182, 221, 0.08);
+        }
+
+        .score-rank {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            min-width: 0;
+            gap: 5px;
+            line-height: 1.35;
+        }
+
+        .rank-main {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .rank-sub {
+            font-size: 0.68rem;
+            font-weight: 400;
+            color: var(--text-light);
+            opacity: 0.68;
+            letter-spacing: 0.1px;
+        }
+
+        .score-points {
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.05rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 4px 14px;
+            border-radius: 20px;
+        }
+
+        .secret-text {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 12px;
+            font-weight: 600;
+        }
+
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .spinner {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, var(--primary), var(--secondary), var(--accent-blue), var(--primary));
+            animation: spin 1s linear infinite;
+            position: relative;
+            margin: 20px auto;
+        }
+        .spinner::before {
+            content: '';
+            position: absolute;
+            inset: 6px;
+            background: #fff8fc;
+            border-radius: 50%;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* 토스트 알림 (링크 복사 완료 메시지) */
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: var(--text-main);
+            color: #fff;
+            text-align: center;
+            border-radius: 30px;
+            padding: 12px 20px;
+            position: fixed;
+            z-index: 99999;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 0.95rem;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            opacity: 0;
+            transition: opacity 0.3s, bottom 0.3s, visibility 0.3s;
+        }
+
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 50px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            #particle-canvas {
+                display: none;
+            }
+        }
+
+.intro-title {
+    white-space: nowrap;
+    font-size: clamp(1.55rem, 7vw, 1.85rem);
+    letter-spacing: -0.8px;
+}
+
+.intro-guide-box {
+    background: var(--bg-base);
+    border: none;
+    padding: 24px 22px;
+}
+
+.intro-guide-title {
+    color: var(--text-main);
+    font-size: 0.92rem;
+}
+
+.intro-guide-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+    font-size: 0.94rem;
+    line-height: 1.6;
+    word-break: keep-all;
+}
+
+.intro-guide-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.intro-guide-icon {
+    flex: 0 0 auto;
+    line-height: 1.6;
+}
+
+.intro-guide-main {
+    padding: 11px 12px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(255, 182, 221, 0.65);
+    border-radius: 14px;
+}
+
+.intro-guide-list strong {
+    color: var(--primary-dark);
+    background: linear-gradient(
+        180deg,
+        transparent 60%,
+        #ffd6ec 40%
+    );
+    font-weight: 800;
+}
+
+    </style>
+</head>
+<body>
+
+    <canvas id="particle-canvas"></canvas>
+
+    <div id="app">
+
+        <!-- 인트로 화면 -->
+        <div id="intro-screen" class="screen active">
+            <span class="deco-sparkle" style="top: 4%; left: 8%; font-size: 1.3rem; animation-delay: 0s;">✦</span>
+            <span class="deco-sparkle" style="top: 2%; right: 10%; font-size: 1rem; animation-delay: 0.8s;">✧</span>
+            <span class="deco-sparkle" style="top: 17%; left: 4%; font-size: 0.85rem; animation-delay: 1.5s;">✦</span>
+            
+<div class="title-group">
+    <div class="sponsor-badge">김아장배</div>
+    <h1 class="intro-title">미즈존예 선발대회</h1>
+    <div class="subtitle">큐플레이 아카이브 존예를 찾아서</div>
+    <div class="date-text">투표 기간: 2026.07.22 ~ 07.26</div>
+</div>
+
+<div class="pink-box intro-guide-box">
+    <div class="pink-box-title intro-guide-title">심사 가이드</div>
+
+    <div class="intro-guide-list">
+        <div class="intro-guide-item">
+            <span class="intro-guide-icon">🎭</span>
+            <span>
+                네 후보의 실제 답변이
+                <strong>익명</strong>으로 섞여 나옵니다.
+            </span>
+        </div>
+
+        <div class="intro-guide-item intro-guide-main">
+            <span class="intro-guide-icon">💡</span>
+            <span>
+                내 취향이 아니라,<br>
+                <strong>“이 사람 진짜 존예일 것 같다”</strong>는
+                답변을 골라주세요!
+            </span>
+        </div>
+
+        <div class="intro-guide-item">
+            <span class="intro-guide-icon">👑</span>
+            <span>
+                모든 선택을 합산해
+                <strong>미즈존예 진·선·미</strong>를 결정합니다.
+            </span>
+        </div>
+    </div>
+
+    <div class="prize-box">
+        <div class="prize-title">PRIZE</div>
+        <div class="prize-item">미즈존예 진·선·미에게 차등 상금 지급</div>
+        <div class="prize-item">심사위원 중 추첨을 통해 소정의 선물 증정</div>
+    </div>
+</div>
+
+            <button id="start-btn" class="btn-primary" type="button" onclick="startTest()">심사 시작하기</button>
+        </div>
+
+        <!-- 이미 투표한 유저 화면 -->
+        <div id="already-voted-screen" class="screen" style="justify-content: center;">
+            <div class="sponsor-badge" style="background:var(--text-light);">THANK YOU</div>
+            <h1 style="margin-top: 15px;">투표 완료</h1>
+            <p style="text-align: center; font-weight:600; color: var(--text-light); margin-top: 20px;">
+                이미 소중한 한 표를 행사하셨습니다.<br>
+                최종 결과는 7월 27일에 공개됩니다!
+            </p>
+        </div>
+
+        <!-- 투표 마감 화면 -->
+        <div id="closed-screen" class="screen" style="justify-content: center;">
+            <div class="sponsor-badge" style="background:var(--text-light);">VOTING CLOSED</div>
+            <h1 style="margin-top: 15px;">투표 마감</h1>
+            <p style="text-align: center; font-weight:600; color: var(--text-light); margin-top: 20px; line-height: 1.7;">
+                투표가 마감되었습니다.<br>
+                최종 결과는 7월 27일에 공개됩니다!
+            </p>
+        </div>
+
+        <!-- 질문 화면 -->
+        <div id="question-screen" class="screen">
+            <div class="progress-wrapper">
+                <div class="progress-bar" id="progress"></div>
+            </div>
+            <div class="q-hint">Guess Who? 👀💕</div>
+
+            <div class="question-text" id="question-title">질문 텍스트</div>
+            <div class="answers-container" id="answer-container">
+                <!-- Javascript에서 버튼 동적 생성 -->
+            </div>
+        </div>
+
+        <!-- 이벤트 응모 화면 -->
+        <div id="event-screen" class="screen">
+            <span class="deco-sparkle" style="top: 3%; left: 10%; font-size: 1.1rem; animation-delay: 0.3s;">✧</span>
+            <div class="sponsor-badge">FINAL STEP</div>
+            <h1 style="font-size: 1.5rem; margin-top:10px;">마지막 단계</h1>
+            <p style="text-align: center; margin-bottom: 30px; font-size: 0.9rem; color: var(--text-main); font-weight: 600; line-height: 1.6;">
+                결과를 확인하기 전에 닉네임을 남겨주세요.<br>
+                심사위원 여러분 중 추첨을 통해 소정의 선물을 드립니다.
+                <span class="warning-text">※ 아래 '내 원픽 확인하기' 버튼을<br>눌러야 투표가 정상 제출됩니다!</span>
+            </p>
+
+            <div style="width: 100%;">
+                <input type="text" id="voter-nickname" class="styled-input" maxlength="30" autocomplete="nickname" aria-label="인게임 닉네임" placeholder="인게임 닉네임을 적어주세요">
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="anon-check">
+                <label for="anon-check">익명으로 제출 (이벤트 미참여)</label>
+            </div>
+
+            <button id="submit-btn" class="btn-primary urgent" type="button" onclick="submitVote()">내 원픽 확인하기</button>
+        </div>
+
+        <!-- 로딩 화면 -->
+        <div id="loading-screen" class="screen" style="justify-content: center;">
+            <div class="spinner"></div>
+            <h2 style="color: var(--primary); margin-bottom: 10px; font-size: 1.2rem; font-weight:800; text-align: center;">데이터 집계 중</h2>
+            <p style="color: var(--text-main); font-weight:600; text-align: center; font-size: 0.9rem;">당신의 안목이 선택한 존예는?</p>
+        </div>
+
+        <!-- 결과 화면 -->
+        <div id="result-screen" class="screen">
+            <span class="deco-sparkle" style="top: 3%; left: 8%; font-size: 1.2rem; animation-delay: 0.2s;">✦</span>
+            <span class="deco-sparkle" style="top: 5%; right: 8%; font-size: 1rem; animation-delay: 1s;">✧</span>
+            <div class="sponsor-badge">YOUR PICK</div>
+            <div class="result-heading">
+                <div class="result-main-title">김아장배<br>미즈존예 선발대회</div>
+                <div class="result-subtitle">당신이 뽑은 미즈존예</div>
+            </div>
+
+            <div class="result-img-box">
+                <img
+    id="my-pick-image"
+    class="result-img"
+    src=""
+    alt="실사화"
+    onerror="this.onerror=null; this.src='https://placehold.co/400x400/ffe3ed/ff7eb3?text=Secret';"
+>
+            </div>
+
+            <div class="pick-name" id="my-pick-name">참가자 ?</div>
+            <p style="font-size: 0.9rem; color: var(--text-main); font-weight:600; text-align: center;">
+                당신의 픽은 1위일까요, 마지노선일까요?
+            </p>
+
+            <div class="overall-box">
+                <div class="overall-title">🔥 실시간 치열한 득표 현황 🔥</div>
+                <div class="score-list" id="score-list">
+                    <div style="font-size: 0.9rem; color: var(--text-light); padding: 10px;">데이터 집계 중...</div>
+                </div>
+                <div class="secret-text">미즈존예 선발대회 최종 결과는<br>7월 27일 00시에 공개됩니다!</div>
+            </div>
+            
+            <!-- 공유하기 버튼 추가 -->
+            <button class="btn-share" onclick="copyShareLink()">큐친들에게 테스트 공유하기 🔗</button>
+        </div>
+
+    </div>
+
+    <!-- 토스트 알림 HTML 추가 -->
+    <div id="toast-msg" class="toast">링크가 복사되었습니다!</div>
+
+    <script type="module">
+        // 단일 HTML 파일이므로 npm import가 아니라 Firebase 공식 브라우저 모듈(CDN)을 사용합니다.
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
+        import {
+            getFirestore,
+            doc,
+            getDoc,
+            runTransaction,
+            serverTimestamp
+        } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyB3H_xJAfr3m9oYA9bm5bBrLKMMSbEbCpU",
+            authDomain: "ms-jonye-test.firebaseapp.com",
+            projectId: "ms-jonye-test",
+            storageBucket: "ms-jonye-test.firebasestorage.app",
+            messagingSenderId: "82274004029",
+            appId: "1:82274004029:web:aaf7c787a1264544104e54"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // ==========================================
+        // 📌 인물별 결과 프로필 사진 링크 입력하기
+        // ==========================================
+        const userInfo = {
+            "A": { name: "유이밍", img: "https://raw.githubusercontent.com/kimazang/msjonye/main/p_ming.png" },
+            "B": { name: "도란", img: "https://raw.githubusercontent.com/kimazang/msjonye/main/p_doran.png" },
+            "C": { name: "콩팥", img: "https://raw.githubusercontent.com/kimazang/msjonye/main/p_kong.png" },
+            "D": { name: "1991", img: "https://raw.githubusercontent.com/kimazang/msjonye/main/p_1991.png" }
+        };
+
+        // ==========================================
+        // 📌 질문 및 후보별 답변 입력하기
+        // - type: "text" (텍스트 답변만), "image" (이미지만), "image-text" (이미지+텍스트)
+        // - img: 이미지 링크 주소를 넣어주세요.
+        // - text: 텍스트 답변을 넣어주세요.
+        // - targets: 이 답변을 골랐을 때 점수가 올라갈 사람 (예: ["A"], 혹은 다중 선택시 ["B", "C"])
+        // ==========================================
+        const questions = [
+            {
+                q: "렛미인트로듀스마이셀프",
+                type: "text",
+                answers: [
+                    { targets: ["A"], text: "한채영을 닮고 미소가 예쁜 나" },
+                    { targets: ["B"], text: "미모는 나의 무기!" },
+                    { targets: ["C"], text: "존예라는 말 많이 들어요 :)" },
+                    { targets: ["D"], text: "안녕? 나는 퀸♡ 프린세스♡" }
+                ]
+            },
+            {
+                q: "큐플레이 캐꾸 실력",
+                type: "image",
+                grid: true,
+                imgClass: "square",
+                answers: [
+                    { targets: ["A"], img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_qplay_ming.png" },
+                    { targets: ["B"], img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_qplay_doran.png" },
+                    { targets: ["C"], img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_qplay_kong.png" },
+                    { targets: ["D"], img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_qplay_1991.png" }
+                ]
+            },
+            {
+                q: "카톡 프사 너야?ㅋ",
+                type: "image",
+                grid: true,
+                imgClass: "square",
+                answers: [
+                    { targets: ["A"], img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_kakao_a.png", badge: "프사 없음" },
+                    { targets: ["B"], img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_kakao_b.png" },
+                    { targets: ["C"], img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_kakao_c.png" },
+                    { targets: ["D"], img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_kakao_d.png" }
+                ]
+            },
+            {
+                q: "앞머리 유무",
+                type: "text",
+                answers: [
+                    { targets: ["B", "C"], text: "앞머리 있음" },
+                    { targets: ["A", "D"], text: "앞머리 없음" },
+                ]
+            },
+            {
+                q: "밀고 있는 추구미",
+                type: "text",
+                answers: [
+                    { targets: ["A"], text: "언제까지나 섹시해 보이고 싶어요." },
+                    { targets: ["B"], text: "지뢰계, 스트릿 캐주얼, 페미닌 등등! 그때그때 달라요!" },
+                    { targets: ["C"], text: "자연스러운 아름다움이랄까?" },
+                    { targets: ["D"], text: "쇼핑몰 라룸st, 심플해도 멋있게" }
+                ]
+            },
+            {
+                q: "연누닮?",
+                type: "image-text",
+                grid: true,
+                imgClass: "square",
+                answers: [
+                    { targets: ["A"], text: "강유미", img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_star_a.png" },
+                    { targets: ["B"], text: "태연", img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_star_b.png" },
+                    { targets: ["C"], text: "윈터", img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_star_c.png" },
+                    { targets: ["D"], text: "임수정", img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_star_d.png" }
+                ]
+            },
+            {
+                q: "동물 중엔 무슨상?",
+                type: "text",
+                answers: [
+                    { targets: ["A"], text: "여우상" },
+                    { targets: ["B"], text: "너구리상" },
+                    { targets: ["C"], text: "고양이상" },
+                    { targets: ["D"], text: "강아지상" }
+                ]
+            },
+            {
+                q: "퍼스널 컬러",
+                type: "text",
+                answers: [
+                    { targets: ["A"], text: "...AI가 여름 뮤트래요" },
+                    { targets: ["B", "C"], text: "여름 쿨톤 라이트" },
+                    { targets: ["D"], text: "웜까지만 알아요!" },
+                ]
+            },
+            {
+                q: "#OOTD",
+                type: "image",
+                grid: true,
+                imgClass: "portrait",
+                answers: [
+                    { targets: ["A"], img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_ootd_a.png" },
+                    { targets: ["B"], img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_ootd_b.png" },
+                    { targets: ["C"], img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_ootd_c.png" },
+                    { targets: ["D"], img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_ootd_d.png" }
+                ]
+            },
+            {
+                q: "최애 색조 화장품",
+                type: "image-text",
+                grid: true,
+                imgClass: "square",
+                answers: [
+                    { targets: ["A"], text: "프릴루드 딘토 노스탈지아 아이 팔레트 72 리틀 오스틴", img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_makeup_a.png" },
+                    { targets: ["B"], text: "얼터너티브 스테레오 슈가글레이즈 워터멜론볼", img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_makeup_b.png" },
+                    { targets: ["C"], text: "홀리카홀리카 레터프롬스프링", img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_makeup_c.png" },
+                    { targets: ["D"], text: "3CE 샤인 리플렉터\nRain or Shine", img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_makeup_d.png" }
+                ]
+            },
+            {
+                q: "우린 제법 잘 어울려요",
+                type: "image-text",
+                grid: true,
+                imgClass: "vertical-600-750",
+                answers: [
+                    { targets: ["A"], text: "이재욱", img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_male_a.png" },
+                    { targets: ["B"], text: "박보검", img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_male_b.png" },
+                    { targets: ["C"], text: "윤박", img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_male_c.png" },
+                    { targets: ["D"], text: "서인국", img: "https://raw.githubusercontent.com/kimazang/msjonye/main/q_male_d.png" }
+                ]
+            },
+            {
+                q: "외모 정병 포인트",
+                type: "text",
+                answers: [
+                    { targets: ["A"], text: "왼콧구멍 오른콧구멍 비대칭의 미학" },
+                    { targets: ["B"], text: "얼굴살이 없어서 볼이 좀 T_T" },
+                    { targets: ["C"], text: "왼얼 오른얼 비대칭의 미학" },
+                    { targets: ["D"], text: "턱이 뾰족한 달걀형이고파" }
+                ]
+            }
+        ];
+
+        const VOTING_START = new Date("2026-07-22T00:00:00+09:00");
+        const VOTING_END = new Date("2026-07-27T00:00:00+09:00");
+        const STORAGE_KEY = "ms-jonye_voted_v2";
+
+        let currentQ = 0;
+        let scores = { A: 0, B: 0, C: 0, D: 0 };
+        let answerLocked = false;
+        let isSubmitting = false;
+        let authPromise = null;
+
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen.active').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            document.getElementById(screenId).classList.add('active');
+        }
+
+        function getVotingState(now = new Date()) {
+            if (now < VOTING_START) return 'before';
+            if (now >= VOTING_END) return 'closed';
+            return 'open';
+        }
+
+        async function ensureAnonymousUser() {
+            if (auth.currentUser) return auth.currentUser;
+            if (!authPromise) {
+                authPromise = signInAnonymously(auth)
+                    .then(credential => credential.user)
+                    .finally(() => {
+                        authPromise = null;
+                    });
+            }
+            return authPromise;
+        }
+
+        async function hasServerVote() {
+            const user = await ensureAnonymousUser();
+            const entrySnap = await getDoc(doc(db, 'event_entries', user.uid));
+            return entrySnap.exists();
+        }
+
+        function shuffleAnswers(items) {
+            const result = [...items];
+            for (let i = result.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [result[i], result[j]] = [result[j], result[i]];
+            }
+            return result;
+        }
+
+        function chooseMyPick() {
+            const highest = Math.max(...Object.values(scores));
+            const tied = Object.keys(scores).filter(key => scores[key] === highest);
+            return tied[Math.floor(Math.random() * tied.length)];
+        }
+
+        function normalizeTotals(data = {}) {
+            return ['A', 'B', 'C', 'D'].reduce((result, key) => {
+                const value = Number(data[key]);
+                result[key] = Number.isFinite(value) ? Math.max(0, Math.trunc(value)) : 0;
+                return result;
+            }, {});
+        }
+
+        function renderScoreBoard(totalScores) {
+            const sortedScores = Object.values(normalizeTotals(totalScores)).sort((a, b) => b - a);
+            const scoreList = document.getElementById('score-list');
+            scoreList.innerHTML = '';
+
+            const rankLabels = [
+                { main: '진(眞)', sub: 'Winner' },
+                { main: '선(善)', sub: '1st runner-up' },
+                { main: '미(美)', sub: '2nd runner-up' },
+                { main: '존예 마지노선', sub: 'Maginot Line' }
+            ];
+
+            sortedScores.forEach((score, index) => {
+                const row = document.createElement('div');
+                row.className = 'score-row';
+
+                const rankDiv = document.createElement('div');
+                rankDiv.className = 'score-rank';
+
+                const rankMain = document.createElement('span');
+                rankMain.className = 'rank-main';
+                rankMain.textContent = rankLabels[index].main;
+
+                const rankSub = document.createElement('span');
+                rankSub.className = 'rank-sub';
+                rankSub.textContent = rankLabels[index].sub;
+
+                const scoreDiv = document.createElement('div');
+                scoreDiv.className = 'score-points';
+                scoreDiv.textContent = `${score}점`;
+
+                rankDiv.append(rankMain, rankSub);
+                row.append(rankDiv, scoreDiv);
+                scoreList.appendChild(row);
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast-msg');
+            toast.textContent = message;
+            toast.classList.add('show');
+            window.setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+window.addEventListener('load', async () => {
+    if (!reduceMotion) {
+        animateParticles();
+    }
+
+            const votingState = getVotingState();
+            const startButton = document.getElementById('start-btn');
+
+            if (votingState === 'before') {
+                startButton.disabled = true;
+                startButton.textContent = '7월 22일 00시 오픈';
+                return;
+            }
+
+            if (votingState === 'closed') {
+                showScreen('closed-screen');
+                return;
+            }
+
+            if (localStorage.getItem(STORAGE_KEY)) {
+                showScreen('already-voted-screen');
+                return;
+            }
+
+            try {
+                if (await hasServerVote()) {
+                    localStorage.setItem(STORAGE_KEY, 'true');
+                    showScreen('already-voted-screen');
+                }
+            } catch (error) {
+                console.error('Firebase 초기 확인 실패:', error);
+                // 일시적인 네트워크 오류는 시작 자체를 막지 않고 제출할 때 다시 확인합니다.
+            }
+        });
+
+        const anonCheck = document.getElementById('anon-check');
+        const nicknameInput = document.getElementById('voter-nickname');
+        anonCheck.addEventListener('change', () => {
+            nicknameInput.disabled = anonCheck.checked;
+            if (anonCheck.checked) nicknameInput.value = '';
+        });
+
+        window.startTest = function() {
+            const votingState = getVotingState();
+            if (votingState === 'before') {
+                alert('투표는 7월 22일 00시부터 시작됩니다.');
+                return;
+            }
+            if (votingState === 'closed') {
+                showScreen('closed-screen');
+                return;
+            }
+            if (localStorage.getItem(STORAGE_KEY)) {
+                showScreen('already-voted-screen');
+                return;
+            }
+
+            createParticles(window.innerWidth / 2, window.innerHeight / 2, 20);
+            showScreen('question-screen');
+            showQuestion();
+        };
+
+        function showQuestion() {
+            if (currentQ >= questions.length) {
+                document.getElementById('progress').style.width = '100%';
+                showScreen('event-screen');
+                return;
+            }
+
+            answerLocked = false;
+            const qData = questions[currentQ];
+            document.getElementById('question-title').textContent = qData.q;
+
+            const progress = ((currentQ + 1) / questions.length) * 100;
+            document.getElementById('progress').style.width = `${progress}%`;
+
+            const container = document.getElementById('answer-container');
+            container.innerHTML = '';
+            container.classList.toggle('grid-layout', Boolean(qData.grid));
+
+            shuffleAnswers(qData.answers).forEach(ans => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'answer-btn';
+                if (qData.type === 'image') btn.classList.add('img-only');
+
+                if (ans.badge) {
+                    const badgeEl = document.createElement('span');
+                    badgeEl.className = 'answer-badge';
+                    badgeEl.textContent = ans.badge;
+                    btn.appendChild(badgeEl);
+                }
+
+                if (qData.type.includes('image') && ans.img) {
+                    const imgEl = document.createElement('img');
+                    imgEl.src = ans.img;
+                    imgEl.className = 'answer-img';
+                    imgEl.alt = ans.text ? `${ans.text} 이미지` : '답변 이미지';
+                    imgEl.loading = 'lazy';
+                    imgEl.decoding = 'async';
+                    if (qData.imgClass) imgEl.classList.add(qData.imgClass);
+                    btn.appendChild(imgEl);
+                }
+
+                if (qData.type.includes('text') && ans.text) {
+                    const textEl = document.createElement('div');
+                    textEl.className = 'answer-text';
+                    textEl.textContent = ans.text;
+                    btn.appendChild(textEl);
+                }
+
+                btn.addEventListener('click', event => {
+                    if (answerLocked) return;
+                    answerLocked = true;
+                    container.querySelectorAll('button').forEach(button => {
+                        button.disabled = true;
+                    });
+
+                    createParticles(event.clientX, event.clientY, 10);
+                    ans.targets.forEach(target => {
+                        if (Object.hasOwn(scores, target)) scores[target] += 1;
+                    });
+                    currentQ += 1;
+                    window.setTimeout(showQuestion, 250);
+                });
+
+                container.appendChild(btn);
+            });
+        }
+
+        window.submitVote = async function() {
+            if (isSubmitting) return;
+
+            const votingState = getVotingState();
+            if (votingState !== 'open') {
+                showScreen(votingState === 'closed' ? 'closed-screen' : 'intro-screen');
+                alert(votingState === 'closed' ? '투표가 마감되었습니다.' : '아직 투표 기간이 아닙니다.');
+                return;
+            }
+
+            const nickname = nicknameInput.value.trim();
+            const isAnonymous = anonCheck.checked;
+            if (!isAnonymous && nickname === '') {
+                alert('닉네임을 입력하거나 익명 체크박스를 선택해주세요!');
+                nicknameInput.focus();
+                return;
+            }
+
+            isSubmitting = true;
+            const submitButton = document.getElementById('submit-btn');
+            submitButton.disabled = true;
+            submitButton.textContent = '투표 제출 중...';
+            showScreen('loading-screen');
+
+            const finalName = isAnonymous ? '익명' : nickname.slice(0, 30);
+            const myPick = chooseMyPick();
+
+            try {
+                const user = await ensureAnonymousUser();
+                const entryRef = doc(db, 'event_entries', user.uid);
+                const statsRef = doc(db, 'ms-jonye', 'total_scores');
+
+                const totalScores = await runTransaction(db, async transaction => {
+                    const entrySnap = await transaction.get(entryRef);
+                    const statsSnap = await transaction.get(statsRef);
+
+                    if (entrySnap.exists()) {
+                        throw new Error('ALREADY_VOTED');
+                    }
+                    if (!statsSnap.exists()) {
+                        throw new Error('STATS_NOT_INITIALIZED');
+                    }
+
+                    const currentTotals = normalizeTotals(statsSnap.data());
+                    const nextTotals = {
+                        A: currentTotals.A + scores.A,
+                        B: currentTotals.B + scores.B,
+                        C: currentTotals.C + scores.C,
+                        D: currentTotals.D + scores.D
+                    };
+
+                    transaction.set(entryRef, {
+                        nickname: finalName,
+                        isAnonymous,
+                        votedFor: myPick,
+                        givenScores: { ...scores },
+                        timestamp: serverTimestamp()
+                    });
+                    transaction.update(statsRef, nextTotals);
+
+                    return nextTotals;
+                });
+
+                localStorage.setItem(STORAGE_KEY, 'true');
+                document.getElementById('my-pick-name').textContent = userInfo[myPick].name;
+                document.getElementById('my-pick-image').src = userInfo[myPick].img;
+                renderScoreBoard(totalScores);
+
+                await new Promise(resolve => window.setTimeout(resolve, 650));
+                showScreen('result-screen');
+                createParticles(window.innerWidth / 2, window.innerHeight / 3, 40);
+            } catch (error) {
+                console.error('투표 제출 실패:', error);
+
+                if (error.message === 'ALREADY_VOTED') {
+                    localStorage.setItem(STORAGE_KEY, 'true');
+                    showScreen('already-voted-screen');
+                } else if (error.message === 'STATS_NOT_INITIALIZED') {
+                    showScreen('event-screen');
+                    alert('Firebase의 ms-jonye/total_scores 문서를 먼저 만들어주세요. A, B, C, D 값을 모두 0으로 설정하면 됩니다.');
+                } else {
+                    showScreen('event-screen');
+                    alert('투표 저장에 실패했습니다. 인터넷 연결과 Firebase 설정·보안 규칙을 확인한 뒤 다시 시도해주세요.');
+                }
+            } finally {
+                isSubmitting = false;
+                submitButton.disabled = false;
+                submitButton.textContent = '내 원픽 확인하기';
+            }
+        };
+
+        window.copyShareLink = async function() {
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(window.location.href);
+                } else {
+                    const dummy = document.createElement('textarea');
+                    dummy.value = window.location.href;
+                    dummy.setAttribute('readonly', '');
+                    dummy.style.position = 'fixed';
+                    dummy.style.opacity = '0';
+                    document.body.appendChild(dummy);
+                    dummy.select();
+                    document.execCommand('copy');
+                    dummy.remove();
+                }
+                showToast('링크가 복사되었습니다!');
+            } catch (error) {
+                console.error('링크 복사 실패:', error);
+                showToast('링크 복사에 실패했습니다.');
+            }
+        };
+
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function drawHeart(ctx, x, y, size, color, alpha) {
+            ctx.save();
+            ctx.globalAlpha = alpha;
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            const topCurveHeight = size * 0.3;
+            ctx.moveTo(x, y + topCurveHeight);
+            ctx.bezierCurveTo(x, y, x - size / 2, y, x - size / 2, y + topCurveHeight);
+            ctx.bezierCurveTo(x - size / 2, y + (size + topCurveHeight) / 2, x, y + (size + topCurveHeight) / 2, x, y + size);
+            ctx.bezierCurveTo(x, y + (size + topCurveHeight) / 2, x + size / 2, y + (size + topCurveHeight) / 2, x + size / 2, y + topCurveHeight);
+            ctx.bezierCurveTo(x + size / 2, y, x, y, x, y + topCurveHeight);
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function drawSparkle(ctx, x, y, size, color, alpha, rotation) {
+            ctx.save();
+            ctx.globalAlpha = alpha;
+            ctx.translate(x, y);
+            ctx.rotate(rotation * Math.PI / 180);
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.moveTo(0, -size);
+            ctx.quadraticCurveTo(size * 0.15, -size * 0.15, size, 0);
+            ctx.quadraticCurveTo(size * 0.15, size * 0.15, 0, size);
+            ctx.quadraticCurveTo(-size * 0.15, size * 0.15, -size, 0);
+            ctx.quadraticCurveTo(-size * 0.15, -size * 0.15, 0, -size);
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+        }
+
+        class HeartParticle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.vx = (Math.random() - 0.5) * 3;
+                this.vy = (Math.random() - 0.5) * 3 - 1;
+                this.life = 1.0;
+                this.size = Math.random() * 10 + 8;
+                const colors = ['#ff4fa3', '#ffb6dd', '#ffffff'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vy += 0.05;
+                this.life -= 0.02;
+            }
+            draw() {
+                drawHeart(ctx, this.x, this.y, this.size, this.color, Math.max(0, this.life));
+            }
+        }
+
+        class SparkleParticle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.vx = (Math.random() - 0.5) * 4;
+                this.vy = (Math.random() - 0.5) * 4 - 1.5;
+                this.life = 1.0;
+                this.size = Math.random() * 8 + 6;
+                this.rotation = Math.random() * 360;
+                this.rotSpeed = (Math.random() - 0.5) * 12;
+                const colors = ['#ffb6dd', '#d8b4fe', '#7dd3fc', '#fde68a', '#ffffff'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vy += 0.04;
+                this.life -= 0.025;
+                this.rotation += this.rotSpeed;
+            }
+            draw() {
+                drawSparkle(ctx, this.x, this.y, this.size, this.color, Math.max(0, this.life), this.rotation);
+            }
+        }
+
+        function createParticles(x, y, count = 5) {
+                if (reduceMotion) return;
+            for (let i = 0; i < count; i++) {
+                if (Math.random() > 0.45) {
+                    particles.push(new HeartParticle(x, y));
+                } else {
+                    particles.push(new SparkleParticle(x, y));
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.update();
+                p.draw();
+                if (p.life <= 0) particles.splice(i, 1);
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+if (!reduceMotion) {
+    window.addEventListener('mousemove', (e) => {
+        if (Math.random() > 0.85) {
+            createParticles(e.clientX, e.clientY, 1);
+        }
+    });
+}
+
+    </script>
+</body>
+</html>
