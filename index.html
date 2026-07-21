@@ -902,15 +902,43 @@ button:disabled {
         </div>
 
         <!-- 이미 투표한 유저 화면 -->
-        <div id="already-voted-screen" class="screen" style="justify-content: center;">
-            <div class="sponsor-badge" style="background:var(--text-light);">THANK YOU</div>
-            <h1 style="margin-top: 15px;">투표 완료</h1>
-            <p style="text-align: center; font-weight:600; color: var(--text-light); margin-top: 20px;">
-                이미 소중한 한 표를 행사하셨습니다.<br>
-                최종 결과는 7월 27일에 공개됩니다!
-            </p>
+        <div id="already-voted-screen" class="screen">
+    <div class="sponsor-badge" style="background:var(--text-light);">
+        THANK YOU
+    </div>
+
+    <h1 style="margin-top: 15px;">투표 완료</h1>
+
+    <p style="
+        text-align: center;
+        font-weight: 600;
+        color: var(--text-light);
+        margin-top: 20px;
+        line-height: 1.7;
+    ">
+        이미 소중한 한 표를 행사하셨습니다.<br>
+        현재 득표 현황을 확인해보세요!
+    </p>
+
+    <div class="overall-box">
+        <div class="overall-title">🔥 실시간 치열한 득표 현황 🔥</div>
+
+        <div class="score-list" id="already-score-list">
+            <div style="
+                font-size: 0.9rem;
+                color: var(--text-light);
+                padding: 10px;
+            ">
+                데이터 불러오는 중...
+            </div>
         </div>
 
+        <div class="secret-text">
+            최종 결과는<br>
+            7월 27일 00시에 공개됩니다!
+        </div>
+    </div>
+</div>
         <!-- 투표 마감 화면 -->
         <div id="closed-screen" class="screen" style="justify-content: center;">
             <div class="sponsor-badge" style="background:var(--text-light);">VOTING CLOSED</div>
@@ -1244,10 +1272,13 @@ button:disabled {
             }, {});
         }
 
-        function renderScoreBoard(totalScores) {
-            const sortedScores = Object.values(normalizeTotals(totalScores)).sort((a, b) => b - a);
-            const scoreList = document.getElementById('score-list');
-            scoreList.innerHTML = '';
+        function renderScoreBoard(totalScores, targetId = 'score-list') {
+    const sortedScores = Object.values(normalizeTotals(totalScores))
+        .sort((a, b) => b - a);
+
+    const scoreList = document.getElementById(targetId);
+    if (!scoreList) return;
+    scoreList.innerHTML = '';
 
             const rankLabels = [
                 { main: '진(眞)', sub: 'Winner' },
@@ -1281,6 +1312,37 @@ button:disabled {
             });
         }
 
+
+        async function loadCurrentScores(targetId) {
+            try {
+                const statsSnap = await getDoc(
+                    doc(db, 'ms-jonye', 'total_scores')
+                );
+
+                if (!statsSnap.exists()) {
+                    throw new Error('점수 문서가 없습니다.');
+                }
+
+                renderScoreBoard(statsSnap.data(), targetId);
+            } catch (error) {
+                console.error('현재 점수 불러오기 실패:', error);
+
+                const scoreList = document.getElementById(targetId);
+
+                if (scoreList) {
+                    scoreList.innerHTML = `
+                        <div style="
+                            font-size: 0.9rem;
+                            color: var(--text-light);
+                            padding: 10px;
+                        ">
+                            현재 점수를 불러오지 못했습니다.
+                        </div>
+                    `;
+                }
+            }
+        }
+
         function showToast(message) {
             const toast = document.getElementById('toast-msg');
             toast.textContent = message;
@@ -1309,6 +1371,7 @@ window.addEventListener('load', async () => {
 
             if (localStorage.getItem(STORAGE_KEY)) {
                 showScreen('already-voted-screen');
+                await loadCurrentScores('already-score-list');
                 return;
             }
 
@@ -1316,6 +1379,7 @@ window.addEventListener('load', async () => {
                 if (await hasServerVote()) {
                     localStorage.setItem(STORAGE_KEY, 'true');
                     showScreen('already-voted-screen');
+                    await loadCurrentScores('already-score-list');
                 }
             } catch (error) {
                 console.error('Firebase 초기 확인 실패:', error);
@@ -1330,7 +1394,7 @@ window.addEventListener('load', async () => {
             if (anonCheck.checked) nicknameInput.value = '';
         });
 
-        window.startTest = function() {
+        window.startTest = async function() {
             const votingState = getVotingState();
             if (votingState === 'before') {
                 alert('투표는 7월 22일 00시부터 시작됩니다.');
@@ -1342,6 +1406,7 @@ window.addEventListener('load', async () => {
             }
             if (localStorage.getItem(STORAGE_KEY)) {
                 showScreen('already-voted-screen');
+                await loadCurrentScores('already-score-list');
                 return;
             }
 
@@ -1495,6 +1560,7 @@ window.addEventListener('load', async () => {
                 if (error.message === 'ALREADY_VOTED') {
                     localStorage.setItem(STORAGE_KEY, 'true');
                     showScreen('already-voted-screen');
+                    await loadCurrentScores('already-score-list');
                 } else if (error.message === 'STATS_NOT_INITIALIZED') {
                     showScreen('event-screen');
                     alert('Firebase의 ms-jonye/total_scores 문서를 먼저 만들어주세요. A, B, C, D 값을 모두 0으로 설정하면 됩니다.');
