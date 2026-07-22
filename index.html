@@ -1512,7 +1512,8 @@ window.addEventListener('load', async () => {
                     window.setTimeout(showQuestion, 250);
                 });
 
-});
+                container.appendChild(btn);
+            });
 
 // 현재 질문을 보는 동안 다음 질문 이미지를 미리 다운로드
 preloadQuestionImages(currentQ + 1);
