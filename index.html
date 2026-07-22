@@ -491,8 +491,21 @@ button:disabled {
         }
 
         .answer-img.portrait {
-            aspect-ratio: 3/4;
-            max-height: 30vh;
+        display: block;
+        width: 100%;
+        height: auto;
+
+        /* 강제로 3:4 틀에 맞추지 않기 */
+        aspect-ratio: auto;
+        max-height: none;
+
+        /* 이미지 전체 보존 */
+        object-fit: contain;
+
+        /* 축소 시 부드럽게 보간 */
+        image-rendering: auto;
+        image-rendering: smooth;
+        image-rendering: high-quality;
         }
 
         .answer-img.square {
@@ -838,6 +851,15 @@ button:disabled {
         #ffd6ec 40%
     );
     font-weight: 800;
+}
+
+        @media (min-width: 768px) {
+    .answer-img.portrait {
+        width: 168px;
+        height: 210px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
     </style>
