@@ -1280,6 +1280,18 @@ button:disabled {
             return result;
         }
 
+        function preloadQuestionImages(questionIndex) {
+    const question = questions[questionIndex];
+
+    if (!question) return;
+
+    question.answers.forEach(answer => {
+        if (!answer.img) return;
+
+        const image = new Image();
+        image.src = answer.img;
+    });
+}
         function chooseMyPick() {
             const highest = Math.max(...Object.values(scores));
             const tied = Object.keys(scores).filter(key => scores[key] === highest);
@@ -1473,7 +1485,6 @@ window.addEventListener('load', async () => {
                     imgEl.src = ans.img;
                     imgEl.className = 'answer-img';
                     imgEl.alt = ans.text ? `${ans.text} 이미지` : '답변 이미지';
-                    imgEl.loading = 'lazy';
                     imgEl.decoding = 'async';
                     if (qData.imgClass) imgEl.classList.add(qData.imgClass);
                     btn.appendChild(imgEl);
@@ -1501,9 +1512,11 @@ window.addEventListener('load', async () => {
                     window.setTimeout(showQuestion, 250);
                 });
 
-                container.appendChild(btn);
-            });
-        }
+});
+
+// 현재 질문을 보는 동안 다음 질문 이미지를 미리 다운로드
+preloadQuestionImages(currentQ + 1);
+}
 
         window.submitVote = async function() {
             if (isSubmitting) return;
