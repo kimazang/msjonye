@@ -310,8 +310,13 @@ button:disabled {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark) 60%, var(--secondary));
             color: white;
             border: none;
-            padding: 18px 0;
             width: 100%;
+            min-height: 58px;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.2;
             border-radius: 18px;
             font-size: 1.1rem;
             font-weight: 800;
@@ -798,6 +803,261 @@ button:disabled {
             }
         }
 
+
+        /* 최종 결과 공개 화면 */
+        .final-header {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 22px;
+        }
+
+        .final-kicker {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 28px;
+            padding: 5px 14px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            box-shadow: 0 6px 16px var(--shadow-pink);
+        }
+
+        .final-title {
+            margin-top: 13px;
+            font-size: 1.76rem;
+            line-height: 1.35;
+            font-weight: 900;
+            color: var(--text-main);
+            text-shadow: 2px 2px 0 rgba(255, 182, 221, 0.6);
+        }
+
+        .final-subtitle {
+            margin-top: 8px;
+            color: var(--text-light);
+            font-size: 0.88rem;
+            font-weight: 650;
+            line-height: 1.55;
+        }
+
+        .final-ranking-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            padding-bottom: 26px;
+        }
+
+        .final-rank-card {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 72px minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 13px;
+            padding: 14px;
+            border-radius: 20px;
+            background: #fff;
+            border: 2px solid #f4d9e8;
+            box-shadow: 0 7px 18px rgba(74, 47, 69, 0.08);
+        }
+
+        .final-rank-card.winner {
+            grid-template-columns: 88px minmax(0, 1fr) auto;
+            padding: 18px 15px;
+            border: 3px solid var(--primary);
+            background: linear-gradient(135deg, #fff7fb 0%, #f9efff 55%, #effaff 100%);
+            box-shadow: 0 14px 30px rgba(255, 79, 163, 0.24);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-rank-card.winner::after {
+            content: 'WINNER';
+            position: absolute;
+            top: 8px;
+            right: -24px;
+            width: 96px;
+            padding: 4px 0;
+            text-align: center;
+            transform: rotate(35deg);
+            background: var(--primary);
+            color: #fff;
+            font-size: 0.56rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .final-rank-card.cutoff {
+            border-style: dashed;
+            border-color: #c9a9be;
+            background: linear-gradient(135deg, #fff 0%, #faf6f9 100%);
+        }
+
+        .final-profile-wrap {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(135deg, #ffd3e8, #d8c6ff, #bfeaff);
+            flex: 0 0 auto;
+        }
+
+        .winner .final-profile-wrap {
+            width: 88px;
+            height: 88px;
+            padding: 4px;
+            background: var(--holo);
+            background-size: 250% 250%;
+            animation: holoSlide2 5s ease infinite;
+            box-shadow: 0 8px 20px rgba(255, 79, 163, 0.22);
+        }
+
+        .final-profile {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #fff;
+            border: 3px solid #fff;
+        }
+
+        .final-rank-info {
+            min-width: 0;
+        }
+
+        .final-rank-label {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 6px;
+            line-height: 1.25;
+        }
+
+        .final-rank-ko {
+            color: var(--primary-dark);
+            font-size: 1rem;
+            font-weight: 900;
+        }
+
+        .winner .final-rank-ko {
+            font-size: 1.22rem;
+        }
+
+        .cutoff .final-rank-ko {
+            color: #876a7d;
+        }
+
+        .final-rank-en {
+            color: var(--text-light);
+            font-size: 0.67rem;
+            font-weight: 650;
+        }
+
+        .final-candidate-name {
+            margin-top: 5px;
+            color: var(--text-main);
+            font-size: 1.16rem;
+            font-weight: 900;
+            overflow-wrap: anywhere;
+        }
+
+        .winner .final-candidate-name {
+            font-size: 1.42rem;
+        }
+
+        .final-rank-description {
+            margin-top: 4px;
+            color: var(--text-light);
+            font-size: 0.72rem;
+            font-weight: 600;
+            line-height: 1.35;
+            word-break: keep-all;
+        }
+
+        .final-score-box {
+            min-width: 62px;
+            padding: 7px 10px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            text-align: center;
+            box-shadow: 0 5px 12px rgba(255, 79, 163, 0.2);
+        }
+
+        .winner .final-score-box {
+            min-width: 70px;
+            padding: 9px 11px;
+            box-shadow: 0 7px 16px rgba(255, 79, 163, 0.28);
+        }
+
+        .cutoff .final-score-box {
+            background: linear-gradient(135deg, #ad91a5, #806777);
+            box-shadow: none;
+        }
+
+        .final-score-number {
+            display: block;
+            font-size: 1.16rem;
+            line-height: 1;
+            font-weight: 900;
+        }
+
+        .winner .final-score-number {
+            font-size: 1.38rem;
+        }
+
+        .final-score-unit {
+            display: block;
+            margin-top: 3px;
+            font-size: 0.62rem;
+            font-weight: 700;
+            opacity: 0.9;
+        }
+
+        .final-loading,
+        .final-error {
+            width: 100%;
+            padding: 36px 18px;
+            border-radius: 20px;
+            background: #fff8fc;
+            color: var(--text-light);
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            line-height: 1.6;
+            border: 2px dashed #efcade;
+        }
+
+        @media (max-width: 380px) {
+            .final-rank-card,
+            .final-rank-card.winner {
+                grid-template-columns: 64px minmax(0, 1fr) auto;
+                gap: 10px;
+                padding: 12px 10px;
+            }
+
+            .final-profile-wrap,
+            .winner .final-profile-wrap {
+                width: 64px;
+                height: 64px;
+            }
+
+            .final-score-box,
+            .winner .final-score-box {
+                min-width: 55px;
+                padding: 7px 8px;
+            }
+
+            .final-candidate-name,
+            .winner .final-candidate-name {
+                font-size: 1.05rem;
+            }
+        }
+
 .intro-title {
     white-space: nowrap;
     font-size: clamp(1.55rem, 7vw, 1.85rem);
@@ -961,14 +1221,20 @@ button:disabled {
         </div>
     </div>
 </div>
-        <!-- 투표 마감 화면 -->
-        <div id="closed-screen" class="screen" style="justify-content: center;">
-            <div class="sponsor-badge" style="background:var(--text-light);">VOTING CLOSED</div>
-            <h1 style="margin-top: 15px;">투표 마감</h1>
-            <p style="text-align: center; font-weight:600; color: var(--text-light); margin-top: 20px; line-height: 1.7;">
-                투표가 마감되었습니다.<br>
-                최종 결과는 7월 27일에 공개됩니다!
-            </p>
+        <!-- 최종 결과 공개 화면 -->
+        <div id="final-results-screen" class="screen">
+            <span class="deco-sparkle" style="top: 2%; left: 8%; font-size: 1.2rem;">✦</span>
+            <span class="deco-sparkle" style="top: 5%; right: 8%; font-size: 1rem; animation-delay: 0.9s;">✧</span>
+
+            <div class="final-header">
+                <div class="final-kicker">FINAL RESULTS</div>
+                <div class="final-title">김아장배<br>미즈존예 선발대회</div>
+                <div class="final-subtitle">여러분의 심사로 결정된 최종 순위입니다.</div>
+            </div>
+
+            <div id="final-ranking-list" class="final-ranking-list">
+                <div class="final-loading">최종 점수를 불러오는 중...</div>
+            </div>
         </div>
 
         <!-- 질문 화면 -->
@@ -1249,7 +1515,7 @@ button:disabled {
 
         function getVotingState(now = new Date()) {
             if (now < VOTING_START) return 'before';
-            if (now >= VOTING_END) return 'closed';
+            if (now >= VOTING_END) return 'final';
             return 'open';
         }
 
@@ -1377,6 +1643,133 @@ button:disabled {
             }
         }
 
+        async function loadFinalResults() {
+            const rankingList = document.getElementById('final-ranking-list');
+
+            if (!rankingList) return;
+
+            rankingList.innerHTML = '<div class="final-loading">최종 점수를 불러오는 중...</div>';
+
+            try {
+                const statsSnap = await getDoc(doc(db, 'ms-jonye', 'total_scores'));
+
+                if (!statsSnap.exists()) {
+                    throw new Error('STATS_NOT_INITIALIZED');
+                }
+
+                const totals = normalizeTotals(statsSnap.data());
+                const ranking = Object.entries(totals)
+                    .sort((first, second) => {
+                        const scoreDifference = second[1] - first[1];
+                        if (scoreDifference !== 0) return scoreDifference;
+                        return first[0].localeCompare(second[0]);
+                    });
+
+                const rankMeta = [
+                    {
+                        cardClass: 'winner',
+                        rankKo: '👑 진(眞)',
+                        rankEn: '1위 · Winner',
+                        description: '미즈존예 최종 우승'
+                    },
+                    {
+                        cardClass: 'runner-up',
+                        rankKo: '✨ 선(善)',
+                        rankEn: '2위 · First Runner-up',
+                        description: '미즈존예 최종 2위'
+                    },
+                    {
+                        cardClass: 'beauty',
+                        rankKo: '💎 미(美)',
+                        rankEn: '3위 · Second Runner-up',
+                        description: '미즈존예 최종 3위'
+                    },
+                    {
+                        cardClass: 'cutoff',
+                        rankKo: '🚧 존예 마지노선',
+                        rankEn: '4위 · Barely Made the Cut',
+                        description: '왕관은 놓쳤지만 존예선은 간신히 사수'
+                    }
+                ];
+
+                rankingList.innerHTML = '';
+
+                ranking.forEach(([candidateKey, score], index) => {
+                    const candidate = userInfo[candidateKey];
+                    const meta = rankMeta[index];
+                    const card = document.createElement('article');
+                    card.className = `final-rank-card ${meta.cardClass}`;
+
+                    const profileWrap = document.createElement('div');
+                    profileWrap.className = 'final-profile-wrap';
+
+                    const profile = document.createElement('img');
+                    profile.className = 'final-profile';
+                    profile.src = candidate.img;
+                    profile.alt = `${candidate.name} 프로필 사진`;
+                    profile.decoding = 'async';
+                    profile.onerror = () => {
+                        profile.onerror = null;
+                        profile.src = 'https://placehold.co/300x300/ffe3ed/ff7eb3?text=Secret';
+                    };
+                    profileWrap.appendChild(profile);
+
+                    const info = document.createElement('div');
+                    info.className = 'final-rank-info';
+
+                    const label = document.createElement('div');
+                    label.className = 'final-rank-label';
+
+                    const rankKo = document.createElement('span');
+                    rankKo.className = 'final-rank-ko';
+                    rankKo.textContent = meta.rankKo;
+
+                    const rankEn = document.createElement('span');
+                    rankEn.className = 'final-rank-en';
+                    rankEn.textContent = meta.rankEn;
+
+                    label.append(rankKo, rankEn);
+
+                    const name = document.createElement('div');
+                    name.className = 'final-candidate-name';
+                    name.textContent = candidate.name;
+
+                    const description = document.createElement('div');
+                    description.className = 'final-rank-description';
+                    description.textContent = meta.description;
+
+                    info.append(label, name, description);
+
+                    const scoreBox = document.createElement('div');
+                    scoreBox.className = 'final-score-box';
+
+                    const scoreNumber = document.createElement('span');
+                    scoreNumber.className = 'final-score-number';
+                    scoreNumber.textContent = score.toLocaleString('ko-KR');
+
+                    const scoreUnit = document.createElement('span');
+                    scoreUnit.className = 'final-score-unit';
+                    scoreUnit.textContent = '점';
+
+                    scoreBox.append(scoreNumber, scoreUnit);
+                    card.append(profileWrap, info, scoreBox);
+                    rankingList.appendChild(card);
+                });
+
+                if (!reduceMotion) {
+                    createParticles(window.innerWidth / 2, window.innerHeight / 3, 35);
+                }
+            } catch (error) {
+                console.error('최종 결과 불러오기 실패:', error);
+                rankingList.innerHTML = `
+                    <div class="final-error">
+                        최종 결과를 불러오지 못했습니다.<br>
+                        잠시 후 새로고침해주세요.
+                    </div>
+                `;
+            }
+        }
+
         function showToast(message) {
             const toast = document.getElementById('toast-msg');
             toast.textContent = message;
@@ -1398,8 +1791,9 @@ window.addEventListener('load', async () => {
                 return;
             }
 
-            if (votingState === 'closed') {
-                showScreen('closed-screen');
+            if (votingState === 'final') {
+                showScreen('final-results-screen');
+                await loadFinalResults();
                 return;
             }
 
@@ -1434,8 +1828,9 @@ window.addEventListener('load', async () => {
                 alert('투표는 7월 22일 00시부터 시작됩니다.');
                 return;
             }
-            if (votingState === 'closed') {
-                showScreen('closed-screen');
+            if (votingState === 'final') {
+                showScreen('final-results-screen');
+                await loadFinalResults();
                 return;
             }
             if (localStorage.getItem(STORAGE_KEY)) {
@@ -1524,8 +1919,13 @@ preloadQuestionImages(currentQ + 1);
 
             const votingState = getVotingState();
             if (votingState !== 'open') {
-                showScreen(votingState === 'closed' ? 'closed-screen' : 'intro-screen');
-                alert(votingState === 'closed' ? '투표가 마감되었습니다.' : '아직 투표 기간이 아닙니다.');
+                if (votingState === 'final') {
+                    showScreen('final-results-screen');
+                    await loadFinalResults();
+                } else {
+                    showScreen('intro-screen');
+                    alert('아직 투표 기간이 아닙니다.');
+                }
                 return;
             }
 
